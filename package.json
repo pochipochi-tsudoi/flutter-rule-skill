@@ -1,0 +1,19 @@
+{
+  "name": "flutter-rule-skill",
+  "version": "1.0.0",
+  "description": "Distribute Flutter and Dart agent skills from a GitHub repository.",
+  "type": "module",
+  "bin": {
+    "flutter-rule-skill": "bin/cli.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "agents/",
+    "bin/",
+    "src/",
+    "README.md",
+    "docs/spec.md"
+  ]
+}
