@@ -16,17 +16,17 @@ export const agentDefinitions = Object.freeze({
   }),
   cursor: Object.freeze({
     label: 'Cursor',
-    source: ['agents', 'cursor', '.cursor'],
+    source: ['agents', 'agents', '.agents'],
     target: ['.cursor'],
   }),
   'claude-code': Object.freeze({
     label: 'Claude Code',
-    source: ['agents', 'claude-code', '.claude'],
+    source: ['agents', 'agents', '.agents'],
     target: ['.claude'],
   }),
   copilot: Object.freeze({
     label: 'GitHub Copilot',
-    source: ['agents', 'copilot', '.github'],
+    source: ['agents', 'agents', '.agents'],
     target: ['.github'],
   }),
 });
