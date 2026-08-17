@@ -51,10 +51,12 @@ npx github:pochipochi-tsudoi/flutter-rule-skill --agent agy
 
 ## 開発
 
-CLI のエントリポイントは `bin/cli.mjs` です。実装はレイヤーごとに `src/` 配下へ分離しています。
+CLI のエントリポイントは `bin/cli.ts` です。実装はレイヤーごとに `src/` 配下へ分離し、
+ビルド成果物を `dist/` に出力します。
 
 ```text
-bin/                         CLI エントリポイント
+bin/                         CLIエントリポイント（TypeScript）
+dist/                        ビルド成果物
 src/
 ├── domain/                  エージェント定義・名前解決
 ├── application/             同期ユースケース
@@ -65,6 +67,8 @@ src/
 ローカルで CLI を実行する場合:
 
 ```bash
-node bin/cli.mjs --help
-node bin/cli.mjs --list
+npm install
+npm run build
+node dist/bin/cli.js --help
+node dist/bin/cli.js --list
 ```

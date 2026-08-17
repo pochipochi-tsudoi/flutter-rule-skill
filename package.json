@@ -4,16 +4,23 @@
   "description": "Distribute Flutter and Dart agent skills from a GitHub repository.",
   "type": "module",
   "bin": {
-    "flutter-rule-skill": "bin/cli.mjs"
+    "flutter-rule-skill": "dist/bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "engines": {
     "node": ">=18"
   },
   "files": [
     "agents/",
-    "bin/",
-    "src/",
+    "dist/",
     "README.md",
     "docs/spec.md"
-  ]
+  ],
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
 }

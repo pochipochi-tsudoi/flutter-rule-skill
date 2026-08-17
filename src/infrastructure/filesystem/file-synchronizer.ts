@@ -10,17 +10,24 @@ import {
   symlinkSync,
 } from 'node:fs';
 import { dirname, join } from 'node:path';
+import type { SyncOptions, SyncResult } from '../../application/sync-agents.js';
 
 export class FileSynchronizer {
-  sync(source, target, { force = false, warning = console.warn } = {}) {
+  sync(source: string, target: string, options: SyncOptions): SyncResult {
     if (!existsSync(source)) {
       throw new Error(`配布元が見つかりません: ${source}`);
     }
 
-    return this.copyEntry(source, target, force, '', warning);
+    return this.copyEntry(source, target, options.force, '', options.warning ?? console.warn);
   }
 
-  copyEntry(source, target, force, relativePath, warning) {
+  private copyEntry(
+    source: string,
+    target: string,
+    force: boolean,
+    relativePath: string,
+    warning: (message: string) => void,
+  ): SyncResult {
     const sourceStats = lstatSync(source);
     const displayPath = relativePath || target;
 
@@ -35,7 +42,7 @@ export class FileSynchronizer {
       }
 
       mkdirSync(target, { recursive: true });
-      return readdirSync(source, { withFileTypes: true }).reduce(
+      return readdirSync(source, { withFileTypes: true }).reduce<SyncResult>(
         (result, entry) => {
           const childResult = this.copyEntry(
             join(source, entry.name),

@@ -31,11 +31,13 @@ export const agentDefinitions = Object.freeze({
   }),
 });
 
-export function getAvailableAgentNames() {
-  return Object.keys(agentDefinitions);
+export type AgentName = keyof typeof agentDefinitions;
+
+export function getAvailableAgentNames(): AgentName[] {
+  return Object.keys(agentDefinitions) as AgentName[];
 }
 
-export function resolveAgentNames(value) {
+export function resolveAgentNames(value: string | null): AgentName[] {
   if (!value) {
     throw new Error('--agent でエージェント名を指定してください。');
   }
@@ -53,10 +55,10 @@ export function resolveAgentNames(value) {
     return getAvailableAgentNames();
   }
 
-  const unknownNames = names.filter((name) => !agentDefinitions[name]);
+  const unknownNames = names.filter((name) => !(name in agentDefinitions));
   if (unknownNames.length > 0) {
     throw new Error(`利用できないエージェント名です: ${unknownNames.join(', ')}`);
   }
 
-  return [...new Set(names)];
+  return [...new Set(names)] as AgentName[];
 }

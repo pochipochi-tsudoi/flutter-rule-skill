@@ -1,5 +1,12 @@
-export function parseArguments(args) {
-  const options = { agent: null, force: false, list: false, help: false };
+export interface CliOptions {
+  agent: string | null;
+  force: boolean;
+  list: boolean;
+  help: boolean;
+}
+
+export function parseArguments(args: string[]): CliOptions {
+  const options: CliOptions = { agent: null, force: false, list: false, help: false };
 
   for (let index = 0; index < args.length; index += 1) {
     const argument = args[index];
