@@ -3,8 +3,6 @@
 Flutter/Dart 開発向けの Agent Skills を、npm publish せず GitHub リポジトリから
 プロジェクトへ同期する CLI ツールです。
 
-リポジトリ: https://github.com/pochipochi-tsudoi/flutter-rule-skill
-
 ## 必要環境
 
 - Node.js 18 以上
